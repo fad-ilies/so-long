@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_map.c                                        :+:      :+:    :+:   */
+/*   last_line_1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ifadhli <ifadhli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/29 00:39:37 by ifadhli           #+#    #+#             */
-/*   Updated: 2025/04/01 23:38:13 by ifadhli          ###   ########.fr       */
+/*   Created: 2025/03/29 00:25:53 by ifadhli           #+#    #+#             */
+/*   Updated: 2025/04/10 19:57:04 by ifadhli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void    free_map(char **str)
+int	last_line_1(char **str)
 {
-    int i;
+	int	i;
+	int	j;
 
-    if (!str)
-        return;
-    i = 0;
-    while(str[i])
-    {
-        free(str[i]);
-        i++;
-    }
-    free(str);
+	i = 0;
+	while (**str)
+		i++;
+	j = 0;
+	while (str[i][j])
+	{
+		if (str[i][j] != '1')
+			return (0);
+		j++;
+	}
+	return (1);
 }

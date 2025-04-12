@@ -1,16 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_e.c                                             :+:      :+:    :+:   */
+/*   is_c.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifadhli <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ifadhli <ifadhli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/29 00:39:37 by ifadhli           #+#    #+#             */
-/*   Updated: 2025/03/29 00:41:13 by ifadhli          ###   ########.fr       */
+/*   Created: 2025/03/29 00:37:39 by ifadhli           #+#    #+#             */
+/*   Updated: 2025/04/11 00:19:06 by ifadhli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	is_e(char **str)
+#include "so_long.h"
+
+int	is_c(char **str)
 {
 	int	i;
 	int	j;
@@ -23,13 +25,12 @@ int	is_e(char **str)
 	{
 		while (str[i][j])
 		{
-			if (str[i][j] == 'E')
+			if (str[i][j] == 'C')
 				count += 1;
 			j++;
 		}
+		j = 0;
 		i++;
 	}
-	if (count != 1)
-		return (0);
-	return (1);
+	return (count);
 }

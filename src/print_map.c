@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_p.c                                             :+:      :+:    :+:   */
+/*   print_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifadhli <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ifadhli <ifadhli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/29 00:35:09 by ifadhli           #+#    #+#             */
-/*   Updated: 2025/03/29 00:37:26 by ifadhli          ###   ########.fr       */
+/*   Created: 2025/03/29 00:23:08 by ifadhli           #+#    #+#             */
+/*   Updated: 2025/04/10 23:38:48 by ifadhli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	is_p(char **str)
+#include "so_long.h"
+
+void	print_map(char **str)
 {
-	int	i;
-	int	j;
-	int	count;
+	int i;
 
 	i = 0;
-	j = 0;
-	count = 0;
+	if (!str)
+		ft_printf("Erreur : La map est introuvable ou vide.\n");
 	while (str[i])
 	{
-		while (str[i][j])
-		{
-			if (str[i][j] == 'P')
-				count += 1;
-			j++;
-		}
+		ft_printf("%s\n", str[i]);
 		i++;
 	}
-	if (count != 1)
-		return (0);
-	return (1);
 }

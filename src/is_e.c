@@ -1,29 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   flood_fill.c                                       :+:      :+:    :+:   */
+/*   is_e.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ifadhli <ifadhli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/29 00:37:39 by ifadhli           #+#    #+#             */
-/*   Updated: 2025/04/02 23:45:43 by ifadhli          ###   ########.fr       */
+/*   Created: 2025/03/29 00:39:37 by ifadhli           #+#    #+#             */
+/*   Updated: 2025/04/10 01:37:40 by ifadhli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int flood_fill(int x, int y, t_data *data)
+int	is_e(char **str)
 {
-    int wall;
-    
-    wall = '1';
-    c = 'Z';
-    if (data->map_copy[x][y] == wall || data->map_copy[x][y] == c)
-        return (0);
-    data->map_copy[x][y] = c;
-    flood_fill(x + 1, y, c);
-    flood_fill(x - 1, y, c);
-    flood_fill(x, y + 1, c);
-    flood_fill(x, y - 1, c);
-    return (0);
+	int	i;
+	int	j;
+	int	count;
+
+	i = 0;
+	j = 0;
+	count = 0;
+	while (str[i])
+	{
+		while (str[i][j])
+		{
+			if (str[i][j] == 'E')
+				count += 1;
+			j++;
+		}
+		j = 0;
+		i++;
+	}
+	if (count != 1)
+		return (0);
+	return (1);
 }

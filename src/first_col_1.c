@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_c.c                                             :+:      :+:    :+:   */
+/*   first_col_1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifadhli <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ifadhli <ifadhli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/29 00:37:39 by ifadhli           #+#    #+#             */
-/*   Updated: 2025/03/29 00:39:16 by ifadhli          ###   ########.fr       */
+/*   Created: 2025/03/29 00:27:47 by ifadhli           #+#    #+#             */
+/*   Updated: 2025/04/02 23:25:47 by ifadhli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	is_c(char **str)
+#include "so_long.h"
+
+int	first_col_1(char **str)
 {
 	int	i;
 	int	j;
-	int	count;
 
 	i = 0;
 	j = 0;
-	count = 0;
-	while (str[i])
+	if (!str || !str[i][0])
+		return (0);
+	while (str[i][0])
 	{
-		while (str[i][j])
-		{
-			if (str[i][j] == 'C')
-				count += 1;
-			j++;
-		}
+		if (str[i][0] != '1')
+			return (0);
 		i++;
 	}
-	if (count < 1)
-		return (0);
 	return (1);
 }
+

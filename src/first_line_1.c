@@ -6,9 +6,11 @@
 /*   By: ifadhli <ifadhli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/29 00:23:08 by ifadhli           #+#    #+#             */
-/*   Updated: 2025/03/29 00:50:50 by ifadhli          ###   ########.fr       */
+/*   Updated: 2025/04/02 23:26:29 by ifadhli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "so_long.h"
 
 int	first_line_1(char **str)
 {

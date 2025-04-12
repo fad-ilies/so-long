@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS = -Werror -Wextra -Wall -MMD -g3 -fPIC
+CFLAGS = -Werror -Wextra -Wall -MMD -g3
 INCLUDES = -Iincludes -I./lib/ft_printf -I./lib/libft -I./minilibx-linux
 SRC_DIR = src
 OBJ_DIR = objs.
@@ -8,7 +8,8 @@ MLXFLAGS = -L$(MLX) -lmlx -lXext -lX11 -lm
 LIBPRINTF = lib/ft_printf/libftprintf.a
 LIBFT = lib/libft/libft.a
 
-SRCS = $(shell find $(SRC_DIR) -name '*.c')
+SRCS = $(shell find $(SRC_DIR) $(SRC_DIR) -name '*.c')
+
 OBJS = $(addprefix $(OBJ_DIR)/,$(addsuffix .o,$(notdir $(basename $(SRCS)))))
 
 DEPENDS = $(OBJS:.o=.d)
@@ -24,7 +25,7 @@ $(NAME): $(OBJS) $(LIBPRINTF) $(LIBFT)
 			$(CC) $^ -o $@ $(MLXFLAGS)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
-	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+	$(CC)  $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
@@ -53,4 +54,3 @@ fclean: clean
 
 .PHONY:
 re: fclean all
-

@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   flood_fill.c                                       :+:      :+:    :+:   */
+/*   free_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ifadhli <ifadhli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/29 00:37:39 by ifadhli           #+#    #+#             */
-/*   Updated: 2025/04/02 23:45:43 by ifadhli          ###   ########.fr       */
+/*   Created: 2025/03/29 00:39:37 by ifadhli           #+#    #+#             */
+/*   Updated: 2025/04/01 23:38:13 by ifadhli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "so_long.h"
 
-int flood_fill(int x, int y, t_data *data)
+void	free_map(char **str)
 {
-    int wall;
-    
-    wall = '1';
-    c = 'Z';
-    if (data->map_copy[x][y] == wall || data->map_copy[x][y] == c)
-        return (0);
-    data->map_copy[x][y] = c;
-    flood_fill(x + 1, y, c);
-    flood_fill(x - 1, y, c);
-    flood_fill(x, y + 1, c);
-    flood_fill(x, y - 1, c);
-    return (0);
+	int i;
+
+	i = 0;
+	if (!str)
+	return ;
+	// while (i < len)
+	// {
+	// 	free(str[i]);
+	// 	i++;
+	// }
+	while (str[i])
+	{
+		free(str[i]);
+		i++;
+	}
+	free(str);
 }

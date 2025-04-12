@@ -1,29 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   last_line_1.c                                      :+:      :+:    :+:   */
+/*   close_window.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifadhli <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ifadhli <ifadhli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/29 00:25:53 by ifadhli           #+#    #+#             */
-/*   Updated: 2025/03/29 00:27:24 by ifadhli          ###   ########.fr       */
+/*   Created: 2025/03/29 00:27:47 by ifadhli           #+#    #+#             */
+/*   Updated: 2025/04/13 00:27:33 by ifadhli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	last_line_1(char **str)
-{
-	int	i;
-	int	j;
+#include "so_long.h"
 
-	i = 0;
-	while (**str)
-		i++;
-	j = 0;
-	while (str[i][j])
-	{
-		if (str[i][j] != '1')
-			return (0);
-		j++;
-	}
-	return (1);
+int	close_window(t_data *data)
+{
+	// clean_exit(data);
+	exit_game(data);
+	exit(0);
+	return (0);
 }
