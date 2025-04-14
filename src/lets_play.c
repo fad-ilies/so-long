@@ -1,37 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   last_line_1.c                                      :+:      :+:    :+:   */
+/*   lets_play.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ifadhli <ifadhli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/29 00:25:53 by ifadhli           #+#    #+#             */
-/*   Updated: 2025/04/14 23:26:55 by ifadhli          ###   ########.fr       */
+/*   Created: 2025/03/21 02:13:38 by ifadhli           #+#    #+#             */
+/*   Updated: 2025/04/14 02:36:09 by ifadhli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	last_line_1(t_data *data)
+void	lets_play(t_data *data)
 {
-
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	while (data->map[i])
-		i++;
-	i--;
-	// ft_printf("len last line %d\n", ft_strlen(str[i]));
-	// print_map(str);
-	while (data->map[i][j] != '\n')
-	{
-		// // printf("last line %s\n", str[i]);
-		// ft_printf("int last line %d\n", j);
-		if (data->map[i][j] != '1')
-			return (0);
-		j++;
-	}
-	return (1);
+	load_image(data);
+	map_render(data);
+	mlx_key_hook(data->win, key_move, data);
+	mlx_hook(data->win, 17, 0, close_window, data);
+	mlx_loop(data->mlx);
 }

@@ -6,22 +6,25 @@
 /*   By: ifadhli <ifadhli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/29 00:35:09 by ifadhli           #+#    #+#             */
-/*   Updated: 2025/04/10 01:36:44 by ifadhli          ###   ########.fr       */
+/*   Updated: 2025/04/14 23:26:03 by ifadhli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	is_Square(char **str)
-{
-	size_t	size_first_line;
+int	is_Square(t_data *data){
+	size_t	first_line;
 	int		i;
 
 	i = 0;
-	size_first_line = ft_strlen(str[i]);
-	while (str[i])
+	first_line = ft_strlen(data->map[0]);
+	
+	
+	while (data->map[i])
 	{
-		if (size_first_line != ft_strlen(str[i]))
+		// printf("size 1line%zu\n", size_first_line);
+		// printf("size nline%zu\n", ft_strlen(str[i]));
+		if (first_line != ft_strlen(data->map[i]))
 			return (0);
 		i++;
 	}

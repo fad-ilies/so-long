@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   last_col_1.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ifadhli <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ifadhli <ifadhli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/29 00:30:50 by ifadhli           #+#    #+#             */
-/*   Updated: 2025/03/29 00:34:35 by ifadhli          ###   ########.fr       */
+/*   Updated: 2025/04/14 23:14:58 by ifadhli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "so_long.h"
 
 int	last_col_1(char **str)
 {
@@ -16,15 +18,19 @@ int	last_col_1(char **str)
 	int	j;
 
 	i = 0;
-	j = 0;
-	while (str[i][j])
+	while (str[i])
 	{
-		if (str[i][j + 1] == '\n')
+		j = 0;
+		while(str[i][j])
 		{
-			if (str[i][j] != '1')
-				return (0);
-			i++;
+			if (str[i][j + 1] &&  str[i][j + 1] == '\n' )
+			{
+				if (str[i][j] != '1')
+					return (0);
+			}
+			j++;
 		}
+		i++;
 	}
 	return (1);
 }

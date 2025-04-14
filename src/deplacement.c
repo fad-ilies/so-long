@@ -6,7 +6,7 @@
 /*   By: ifadhli <ifadhli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/29 00:27:47 by ifadhli           #+#    #+#             */
-/*   Updated: 2025/04/12 23:48:56 by ifadhli          ###   ########.fr       */
+/*   Updated: 2025/04/14 21:52:55 by ifadhli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,17 @@ void	check_if_exit(t_data *data)
 			return ;
 		}
 }
-
+void	new_pos(t_data *data, int new_x, int new_y)
+{
+	if (data->map[new_x][new_y] == 'E' && data->count != 0)
+		return ;
+	data->map[data->x][data->y] = '0';
+	data->x = new_x;
+	data->y = new_y;
+	data->map[data->x][data->y] = 'P';
+	data->moves++;
+	ft_printf("moves = %d\n", data->moves);
+}
 void	player_move(t_data *data, int dx, int dy)
 {
 	int		new_x;
@@ -45,26 +55,14 @@ void	player_move(t_data *data, int dx, int dy)
 	}
 	if (temp == '1')
 		return ;
-	if (temp == 'E')
+	if (temp == 'E' && data->count == 0)
 	{
-		printf("%d\n", data->count);
-		if (data->count == 0)
-		{
-			ft_printf("Felicitation tu as remporte la partie !!\n");
-			exit_game(data);
-		}
-		else
-		{
-			ft_printf("La prochaine serra la bonne\n");
-			return ;
-		}
+		ft_printf("\n%d ICI \n", data->count);
+		ft_printf("%d\n", data->count);
+		check_if_exit(data);
 	}
-	data->map[data->x][data->y] = '0';
-	data->x = new_x;
-	data->y = new_y;
-	data->map[data->x][data->y] = 'P';
-	data->moves++;
-	ft_printf("moves = %d\n", data->moves);
+
+	new_pos(data, new_x, new_y);
 	map_render(data);
 }
 

@@ -6,45 +6,13 @@
 /*   By: ifadhli <ifadhli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/21 02:13:38 by ifadhli           #+#    #+#             */
-/*   Updated: 2025/04/13 00:52:33 by ifadhli          ###   ########.fr       */
+/*   Updated: 2025/04/14 23:31:47 by ifadhli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include <fcntl.h>
 #include <stdlib.h>
-
-// t_data	*set_data(t_data *data)
-// {
-// 	// t_data	*data;
-
-// 	// data = malloc(sizeof(t_data));
-// 	// if (!data)
-// 	// {
-// 	// 	return (perror("Erreur allocation mémoire pour 'data'"), NULL);
-// 	// }
-// 	data->colonnes = 0;
-// 	data->lignes = 0;
-// 	data->x = 0;
-// 	data->y = 0;
-// 	data->moves = 0;
-// 	data->map = NULL;
-// 	data->map_copy = NULL;
-// 	data->mlx = NULL;
-// 	data->win = NULL;
-// 	return (data);
-// }
-int	open_fil(char *av)
-{
-	int	fd;
-
-	fd = open(av, O_RDONLY);
-	if (fd < 0)
-	{
-		perror("Fichier non valide");
-	}
-	return (fd);
-}
 
 int	count_line(int fd)
 {
@@ -88,26 +56,32 @@ int	load_map(char *av, t_data *data)
 		return (free_map(data->map), 1);
 	i = 0;
 	while ((line = get_next_line(fd)))
+	{
+		// printf("line -> %s\n", line);
 		data->map[i++] = line;
+	}
 	data->map[i] = NULL;
 	close(fd);
 	return (0);
 }
 int	check_map_ok(t_data *data)
 {
-	if (!is_Square(data->map))
+	if (!is_Square(data))
 	{
-		ft_printf("Erreur : map non carrée\n"), free_map(data->map);
+		ft_printf("Erreur : map non carree\n"), free_map(data->map);
 		return (1);
 	}
 	data->count = is_c(data->map);
-	if (!is_p(data->map, data) || !data->count || !is_e(data->map))
+	// printf("Avant parsing");
+	if (!is_p(data->map, data) || !first_col_1(data->map) || !last_col_1(data->map) || !last_line_1(data) || !first_line_1(data) || !data->count || !is_e(data->map))
 		return (ft_printf("Erreur : map invalide\n"), free_map(data->map), 1);
 	// Flood fill sur copie de la map
 	data->map_copy = copy_map(data);
 	if (!data->map_copy)
-		return (perror("Erreur copie map"), free_map(data->map), free(data), 1);
+		return (perror("Erreur copie map\n"), free_map(data->map), free(data), 1);
 	flood_fill(data, data->x, data->y);
+	// printf("\nApres Flood fill\n");
+	// print_map(data->map_copy);
 	check_flood(data);
 	return (0);
 }
@@ -129,14 +103,6 @@ int	ini_mlx(t_data *data)
 	return (0);
 }
 
-void	lets_play(t_data *data)
-{
-	load_image(data);
-	map_render(data);
-	mlx_key_hook(data->win, key_move, data);
-	mlx_hook(data->win, 17, 0, close_window, data);
-	mlx_loop(data->mlx);
-}
 
 #define ERR_USE "Usage : %s <map.ber>\n"
 
@@ -150,11 +116,10 @@ int	main(int ac, char **av)
 	i = 0;
 	if (ac != 2)
 		return (ft_printf(ERR_USE, av[0]), 1);
-	// data = set_data(&data);
-	// if (&data == NULL)
-	// return (1);
 	if (load_map(av[1], &data))
 		return (1);
+	// print_map(data.map);
+	// return 0;
 	if (check_map_ok(&data))
 		return (1);
 	if (ini_mlx(&data))

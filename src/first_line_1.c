@@ -6,24 +6,27 @@
 /*   By: ifadhli <ifadhli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/29 00:23:08 by ifadhli           #+#    #+#             */
-/*   Updated: 2025/04/02 23:26:29 by ifadhli          ###   ########.fr       */
+/*   Updated: 2025/04/14 23:29:05 by ifadhli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	first_line_1(char **str)
+int	first_line_1(t_data *data)
 {
 	int	i;
 	int	j;
 
 	i = 0;
 	j = 0;
-	if (!str || !str[0][j])
+	printf("fiiiiirst lineee\n");
+	
+	if (!data->map || !data->map[0][j])
 		return (0);
-	while (str[0][j])
+	while (data->map[0][j] != '\n')
 	{
-		if (str[0][j] != '1')
+		ft_printf("char first line %c\n", data->map[0][j]);
+		if (data->map[0][j] != '1')
 			return (0);
 		j++;
 	}

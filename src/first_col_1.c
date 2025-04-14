@@ -6,7 +6,7 @@
 /*   By: ifadhli <ifadhli@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/29 00:27:47 by ifadhli           #+#    #+#             */
-/*   Updated: 2025/04/02 23:25:47 by ifadhli          ###   ########.fr       */
+/*   Updated: 2025/04/14 22:12:32 by ifadhli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	first_col_1(char **str)
 	j = 0;
 	if (!str || !str[i][0])
 		return (0);
-	while (str[i][0])
+	while (str[i])
 	{
 		if (str[i][0] != '1')
 			return (0);
